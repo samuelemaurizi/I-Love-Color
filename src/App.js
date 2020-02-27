@@ -1,10 +1,13 @@
 import React from 'react';
-import './App.css';
+import './style/App.css';
+
+import Palette from './Palette';
+import seedColors from './seedColors';
 
 function App() {
   return (
     <div className='App'>
-      <h1>Create your color palette</h1>
+      <Palette {...seedColors[4]} />
     </div>
   );
 }
