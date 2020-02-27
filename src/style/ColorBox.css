@@ -5,4 +5,52 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  text-transform: uppercase;
+  margin-bottom: -3.5px; /* should fix this */
+}
+
+.copy-btn {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  /* line-height: 2rem; */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ColorBox:hover .copy-btn {
+  opacity: 1;
+}
+
+.box-content {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.5rem;
+  color: #333;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.see-more {
+  /* width: 100%; */
+  position: absolute;
+  border: none;
+  right: 0;
+  bottom: 0;
+  padding: 0.3rem;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
 }
