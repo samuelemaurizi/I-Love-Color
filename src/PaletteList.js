@@ -13,7 +13,7 @@ const styles = {
     backgroundColor: '#479FFF'
   },
   container: {
-    width: '50%',
+    width: '70%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -35,6 +35,10 @@ const styles = {
 };
 
 class PaletteList extends Component {
+  goToPalette(id) {
+    this.props.history.push(`/palette/${id}`);
+  }
+
   render() {
     const { palettes } = this.props;
     const { main, container, nav, palettesGroup } = this.props.classes;
@@ -49,7 +53,10 @@ class PaletteList extends Component {
           <div className={palettesGroup}>
             {palettes.map(palette => (
               <p>
-                <MiniPalette {...palette} />
+                <MiniPalette
+                  {...palette}
+                  handleClick={() => this.goToPalette(palette.id)}
+                />
               </p>
             ))}
           </div>

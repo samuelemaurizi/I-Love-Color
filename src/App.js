@@ -4,6 +4,7 @@ import './style/App.css';
 
 import PaletteList from './PaletteList';
 import Palette from './Palette';
+import SingleColorPalette from './SingleColorPalette';
 import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
 
@@ -21,7 +22,9 @@ function App() {
       <Route
         exact
         path='/'
-        render={() => <PaletteList palettes={seedColors} />}
+        render={routeProps => (
+          <PaletteList palettes={seedColors} {...routeProps} />
+        )}
       />
       <Route
         exact
@@ -29,6 +32,18 @@ function App() {
         render={routeProps => (
           <Palette
             palette={generatePalette(findPalette(routeProps.match.params.id))}
+          />
+        )}
+      />
+      <Route
+        exact
+        path='/palette/:paletteId/:colorId'
+        render={routeProps => (
+          <SingleColorPalette
+            colorId={routeProps.match.params.colorId}
+            palette={generatePalette(
+              findPalette(routeProps.match.params.paletteId)
+            )}
           />
         )}
       />

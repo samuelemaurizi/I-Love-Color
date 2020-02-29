@@ -9,7 +9,16 @@
   margin-bottom: -3.5px; /* should fix this */
 }
 
-.copy-btn {
+.SingleColorPalette .ColorBox {
+  height: 50%;
+}
+
+.ColorBox.go-back {
+  background-color: #333;
+}
+
+.copy-btn,
+.back-btn {
   width: 100px;
   height: 30px;
   position: absolute;
@@ -25,8 +34,16 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  opacity: 0;
   transition: opacity 0.3s;
+}
+
+.copy-btn {
+  opacity: 0;
+}
+
+.back-btn {
+  text-decoration: none;
+  padding: 0.3rem;
 }
 
 .ColorBox:hover .copy-btn {
@@ -42,6 +59,14 @@
   color: #333;
   font-size: 0.7rem;
   letter-spacing: 1px;
+}
+
+.light-text {
+  color: #fff;
+}
+
+.ColorBox .dark-text {
+  color: #333;
 }
 
 .see-more {
