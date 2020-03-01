@@ -20,6 +20,16 @@ const styles = {
       opacity: '1'
     }
   },
+  boxContent: {
+    width: '100%',
+    position: 'absolute',
+    left: '0',
+    bottom: '0',
+    padding: '0.5rem',
+    color: '#333',
+    fontSize: '0.7rem',
+    letterSpacing: '1px'
+  },
   seeMore: {
     color: props =>
       chroma(props.background).luminance() >= 0.7 ? '#333' : '#fff',
@@ -48,6 +58,49 @@ const styles = {
     cursor: 'pointer',
     opacity: 0,
     transition: 'opacity 0.3s'
+  },
+  copyOverlay: {
+    opacity: '0',
+    zIndex: '0',
+    width: '100%',
+    height: '100%',
+    transform: 'scale(0.1)',
+    transition: 'transform 0.4s ease-in-out'
+  },
+  showOverlay: {
+    opacity: '1',
+    transform: 'scale(12)',
+    zIndex: '10',
+    position: 'absolute'
+  },
+  copyMsg: {
+    position: 'fixed',
+    top: '0',
+    right: '0',
+    bottom: '0',
+    left: '0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '4rem',
+    color: '#fff',
+    opacity: '0',
+    transform: 'scale(0.1)',
+    '& h1': {
+      fontWeight: '400',
+      margin: '0'
+    },
+    '& p': {
+      fontSize: '2rem'
+    }
+  },
+  showCopyMsg: {
+    opacity: '1',
+    transform: 'scale(1)',
+    zIndex: '12',
+    transition: 'all 0.5s',
+    transitionDelay: '0.3s'
   }
 };
 
@@ -87,14 +140,17 @@ class ColorBox extends Component {
         <div style={{ background: background }} className={classes.colorBox}>
           <div
             style={{ background: background }}
-            className={`copy-overlay ${copied && 'show'}`}
+            className={`${classes.copyOverlay} ${copied &&
+              classes.showOverlay}`}
           />
-          <div className={`copy-msg ${copied && 'show'}`}>
+          <div
+            className={`${classes.copyMsg} ${copied && classes.showCopyMsg}`}
+          >
             <h1>Copied!</h1>
             <p className={contrast ? 'dark-text' : null}>{background}</p>
           </div>
-          <div className='copy-container'>
-            <div className='box-content'>
+          <div>
+            <div className={classes.boxContent}>
               <span className={contrast ? 'light-text' : null}>{name}</span>
             </div>
             <button className={classes.copyBtn}>Copy</button>
