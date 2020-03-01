@@ -48,7 +48,7 @@ export default class Palette extends Component {
           level={level}
           changeLevel={this.changeLevel}
           handleChange={this.changeFormat}
-          showLevel
+          showFullPalette
         />
         <div className='Palette-colors'>
           {/* bunch of color boxes */}
